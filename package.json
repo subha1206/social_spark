@@ -1,0 +1,29 @@
+{
+  "name": "social_spark",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon db"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subha1206/social_spark.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/subha1206/social_spark/issues"
+  },
+  "homepage": "https://github.com/subha1206/social_spark#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.9",
+    "nodemon": "^2.0.4",
+    "validator": "^13.1.1"
+  }
+}

@@ -1,0 +1,36 @@
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# node-waf configuration
+.lock-wscript
+
+# IDE - VSCode
+.vscode/*
+
+# misc
+.sass-cache
+connect.lock
+typings
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Optional npm cache directory
+.npm
+
+# dotenv environment variables file
+.env
+
+
+# System Files
+.DS_Store
+Thumbs.db
