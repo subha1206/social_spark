@@ -8,8 +8,12 @@ body,
   font-family: "Open Sans", sans-serif;
 }
 
+body {
+  background-color: #e1e8ed !important;
+}
+
 .header-bar {
-  background-color: #292929;
+  background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
 }
 
 .container--narrow {
@@ -174,8 +178,25 @@ form.sign-in-form {
   transition: 0.5s;
 }
 
+.custom-btn-header {
+  padding: 0 20px;
+  background-color: #5995fd;
+  border: none;
+  outline: none !important;
+  /*height: 49px;
+  */
+  border-radius: 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
 .custom-btn:hover {
   background-color: #4d84e2;
+}
+
+.custom-btn-header:hover {
+  padding: 0 19px;
 }
 .panels-container {
   position: absolute;
@@ -206,6 +227,12 @@ form.sign-in-form {
 }
 
 .image {
+  width: 100%;
+  transition: transform 1.1s ease-in-out;
+  transition-delay: 0.4s;
+}
+
+.image-welcome {
   width: 100%;
   transition: transform 1.1s ease-in-out;
   transition-delay: 0.4s;
@@ -348,6 +375,10 @@ form.sign-in-form {
     -o-transition: transform 0.5s ease-in-out;
   }
 
+  .image-welcome {
+    width: 500px;
+  }
+
   .panel .content {
     padding-right: 15%;
     transition: transform 0.5s ease-in-out;
@@ -414,12 +445,27 @@ form.sign-in-form {
 }
 
 @media (max-width: 570px) {
-  form {
+  .form {
     padding: 0 1.5rem;
   }
-
+  .custom-btn-header {
+    padding: 0 5px;
+    background-color: #5995fd;
+    border: none;
+    outline: none !important;
+    border-radius: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  .custom-btn-header:hover {
+    padding: 0 5px;
+  }
   .image {
     display: none;
+  }
+  .image-welcome {
+    width: 200px;
   }
   .panel .content {
     padding: 0.5rem 1rem;
