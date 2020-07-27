@@ -1,4 +1,4 @@
-/* * {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,10 +12,9 @@ body,
   background-color: #292929;
 }
 
-/* .container--narrow {
+.container--narrow {
   max-width: 732px;
-} */
-/* 
+}
 .header-search-icon {
   position: relative;
   top: 3px;
@@ -25,7 +24,7 @@ body,
   cursor: pointer;
   position: relative;
   top: 3px;
-}  */
+}
 
 .container-main {
   position: relative;
@@ -63,7 +62,7 @@ body,
   -o-transition: 1s 0.7s ease-in-out;
 }
 
-form {
+.form {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -160,11 +159,11 @@ form.sign-in-form {
   border-color: #4481eb;
 }
 
-.btn {
+.custom-btn {
   width: 150px;
   background-color: #5995fd;
   border: none;
-  outline: none;
+  outline: none !important;
   height: 49px;
   border-radius: 49px;
   color: #fff;
@@ -175,7 +174,7 @@ form.sign-in-form {
   transition: 0.5s;
 }
 
-.btn:hover {
+.custom-btn:hover {
   background-color: #4d84e2;
 }
 .panels-container {
@@ -248,7 +247,7 @@ form.sign-in-form {
   padding: 0.7rem 0;
 }
 
-.btn.transparent {
+.custom-btn.transparent {
   margin: 0;
   background: none;
   border: 2px solid #fff;
@@ -370,7 +369,7 @@ form.sign-in-form {
     padding: 0.5rem 0;
   }
 
-  .btn.transparent {
+  .custom-btn.transparent {
     width: 110px;
     height: 35px;
     font-size: 0.7rem;
