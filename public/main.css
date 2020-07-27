@@ -179,6 +179,7 @@ form.sign-in-form {
 }
 
 .custom-btn-header {
+  /* text-decoration: none; */
   padding: 0 20px;
   background-color: #5995fd;
   border: none;

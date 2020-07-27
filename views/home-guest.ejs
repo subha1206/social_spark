@@ -26,8 +26,10 @@
   </head>
   <body>
     <div class="container-main">
-      <!-- <img src="/img/brand.png" style="height:100px; width: 100px;" alt="" srcset="" /> -->
       <div class="forms-container">
+        <!-- <%errors.forEach(function(msg) { %>
+          <div class="alert alert-danger text-center"><%= msg %></div>
+          <% }) %> -->
         <div class="signin-signup">
           <form action="/login" method="POST" class="sign-in-form form">
             <h2 class="title">Sign in</h2>
@@ -150,12 +152,6 @@
       </div>
     </div>
 
-    <footer class="border-top text-center small text-muted py-3">
-      <p class="m-0">
-        Copyright &copy; 2020
-        <a href="/" class="text-muted">SocialSpark</a>. All rights reserved.
-      </p>
-    </footer>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

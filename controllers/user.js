@@ -16,19 +16,28 @@ exports.login = function (req, res) {
     .login()
     .then(function (result) {
       req.session.user = { username: user.data.username };
-      res.send("hello")
+    })
+    .then(() => {
+      res.redirect("/");
     })
     .catch(function (err) {
-      res.send(err);
+      req.flash("errors", err);
+      req.session.save(function () {
+        res.redirect("/");
+      });
     });
 };
 
-exports.logout = function () {};
+exports.logout = function (req, res) {
+  req.session.destroy(function () {
+    res.redirect("/");
+  });
+};
 
 exports.home = (req, res) => {
   if (req.session.user) {
-    res.render("welcome.ejs");
+    res.render("welcome", { username: req.session.user.username });
   } else {
-    res.render("home-guest");
+    res.render("home-guest", { errors: req.flash("errors") });
   }
 };
