@@ -1,15 +1,58 @@
 const UserModel = require("../models/UserModel");
 
-exports.register = (req, res) => {
-  let user = new UserModel(req.body);
-  user.register();
+const multer = require("multer");
+const path = require("path");
 
-  if (user.errors.length) {
-    res.send(user.errors);
+const storage = multer.diskStorage({
+  destination: "./public/uploads",
+  filename: function (req, file, cb) {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 5000000 },
+  fileFilter: function (req, file, cb) {
+    checkFileType(file, cb);
+  },
+}).single("user-profile");
+
+const checkFileType = (file, cb) => {
+  const fileTypes = /jpeg|jpg|png/;
+  const extName = fileTypes.test(path.extname(file.originalname).toLowerCase());
+  const mimeType = fileTypes.test(file.mimetype);
+
+  if (mimeType && extName) {
+    return cb(null, true);
   } else {
-    res.send("congratsss");
+    return cb("Error: Img only");
   }
 };
+
+exports.register = (req, res) => {
+  let user = new UserModel(req.body);
+  user
+    .register()
+    .then(() => {
+      req.session.user = { username: user.data.username };
+      req.session.save(function () {
+        res.redirect("/");
+      });
+    })
+    .catch((regErrors) => {
+      regErrors.forEach(function (error) {
+        req.flash("reg_errors", error);
+      });
+      req.session.save(function () {
+        res.redirect("/");
+      });
+    });
+};
+
 exports.login = function (req, res) {
   let user = new UserModel(req.body);
   user
@@ -34,10 +77,32 @@ exports.logout = function (req, res) {
   });
 };
 
+exports.uploadImg = (req, res) => {
+  upload(req, res, (err) => {
+    if (err) {
+      req.flash("errors_img", err);
+      res.redirect("/");
+    } else {
+      if (req.file === undefined) {
+        req.flash("errors_img", "Profile picture can not be empty");
+        res.redirect("/");
+      } else {
+        res.redirect("/");
+      }
+    }
+  });
+};
+
 exports.home = (req, res) => {
   if (req.session.user) {
-    res.render("welcome", { username: req.session.user.username });
+    res.render("welcome", {
+      username: req.session.user.username,
+      errors_img: req.flash("errors_img"),
+    });
   } else {
-    res.render("home-guest", { errors: req.flash("errors") });
+    res.render("home-guest", {
+      errors: req.flash("errors"),
+      reg_error: req.flash("reg_errors"),
+    });
   }
 };

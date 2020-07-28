@@ -69,6 +69,9 @@
             class="sign-up-form form"
           >
             <h2 class="title">Sign up</h2>
+            <%reg_error.forEach(function(msg) { %>
+            <div class="alert-custom text-center"><%= msg %></div>
+            <% }) %>
             <div class="input-field">
               <!-- <i class="fas fa-user"></i> -->
               <input
@@ -78,6 +81,7 @@
                 placeholder="Username"
               />
             </div>
+
             <div class="input-field">
               <input
                 name="email"
@@ -86,6 +90,7 @@
                 placeholder="Email"
               />
             </div>
+
             <div class="input-field">
               <input name="password" type="password" placeholder="Password" />
             </div>

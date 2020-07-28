@@ -2,6 +2,7 @@ const express = require("express");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
+
 const router = require("./router");
 
 const app = express();
@@ -17,12 +18,16 @@ let sessionOpt = session({
   },
 });
 
+
+
 app.use(sessionOpt);
 app.use(flash());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+// app.use(multer)
 
-app.use(express.static("public"));
+
+app.use(express.static("./public"));
 
 app.set("views", "views");
 app.set("view engine", "ejs");
@@ -30,3 +35,4 @@ app.set("view engine", "ejs");
 app.use("/", router);
 
 module.exports = app;
+
