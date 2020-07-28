@@ -27,11 +27,11 @@
   <body>
     <div class="container-main">
       <div class="forms-container">
-        <!-- <%errors.forEach(function(msg) { %>
-          <div class="alert alert-danger text-center"><%= msg %></div>
-          <% }) %> -->
         <div class="signin-signup">
           <form action="/login" method="POST" class="sign-in-form form">
+            <%errors.forEach(function(msg) { %>
+            <div class="alert-custom text-center"><%= msg %></div>
+            <% }) %>
             <h2 class="title">Sign in!</h2>
             <div class="input-field">
               <!-- <i class="fas fa-user"></i> -->
