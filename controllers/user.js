@@ -93,10 +93,19 @@ exports.uploadImg = (req, res) => {
   });
 };
 
+exports.isAuth = (req, res, next) => {
+  if (req.session.user) {
+    next();
+  } else {
+    req.flash("errors", "You Must be logged In to perform the action");
+    req.session.save(() => {
+      res.redirect("/");
+    });
+  }
+};
 exports.home = (req, res) => {
   if (req.session.user) {
     res.render("welcome", {
-      username: req.session.user.username,
       errors_img: req.flash("errors_img"),
     });
   } else {
