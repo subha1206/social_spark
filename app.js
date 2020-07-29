@@ -18,14 +18,17 @@ let sessionOpt = session({
   },
 });
 
-
-
 app.use(sessionOpt);
 app.use(flash());
+
+app.use(function (req, res, next) {
+  res.locals.user = req.session.user;
+  next();
+});
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 // app.use(multer)
-
 
 app.use(express.static("./public"));
 
@@ -35,4 +38,3 @@ app.set("view engine", "ejs");
 app.use("/", router);
 
 module.exports = app;
-
