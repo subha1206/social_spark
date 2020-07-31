@@ -52,64 +52,12 @@
             ><img
               title="My Profile"
               data-placement="bottom"
-              data-toggle="modal"
+              data-toggle="tooltip"
               data-target="#exampleModalCenter"
               style="width: 32px; height: 32px; border-radius: 16px;"
               src="https://gravatar.com/avatar/f64fc44c03a8a7eb1d52502950879659?s=128"
           /></a>
 
-          <div
-            class="modal fade"
-            id="exampleModalCenter"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalCenterTitle"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">
-                    User Profile Image
-                  </h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  Please Select a profile picture
-                  <form
-                    action="/upload-img"
-                    method="POST"
-                    class="d-inline"
-                    enctype="multipart/form-data"
-                  >
-                    <input
-                      type="file"
-                      name="user-profile"
-                      id="user-profile"
-                      class="inputfile inputfile-4"
-                    />
-                    <button class="custom-btn-header">Upload Image</button>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
           <button class="custom-btn-header">
             <a style="text-decoration: none; color: white;" href="/create-post"
               >Create Post</a
