@@ -1,4 +1,5 @@
 const UserModel = require("../models/UserModel");
+const userCollection = require("../db").db().collection("users");
 
 const multer = require("multer");
 const path = require("path");
@@ -87,7 +88,20 @@ exports.uploadImg = (req, res) => {
         req.flash("errors_img", "Profile picture can not be empty");
         res.redirect("/");
       } else {
-        res.redirect("/");
+        userCollection
+          .updateOne(
+            { username: req.session.user.username },
+            { $set: { p_img: req.file.path } }
+          )
+          .then(function (result) {
+            req.session.user = {
+              username: req.session.user.username,
+              userImg: req.file.filename,
+            };
+          })
+          .then((ress) => {
+            res.redirect("/");
+          });
       }
     }
   });

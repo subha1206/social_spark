@@ -48,15 +48,27 @@
             data-placement="bottom"
             ><i class="fas fa-comment"></i
           ></span>
-          <a href="#" class="mr-2"
-            ><img
+          <a href="#" class="mr-2">
+            <% if(user.userImg){ %>
+            <img
               title="My Profile"
               data-placement="bottom"
               data-toggle="modal"
               data-target="#exampleModalCenter"
               style="width: 32px; height: 32px; border-radius: 16px;"
-              src="https://gravatar.com/avatar/f64fc44c03a8a7eb1d52502950879659?s=128"
-          /></a>
+              src="uploads/<%= user.userImg %>"
+            />
+            <% } else{ %>
+            <img
+              title="My Profile"
+              data-placement="bottom"
+              data-toggle="modal"
+              data-target="#exampleModalCenter"
+              style="width: 32px; height: 32px; border-radius: 16px;"
+              src="uploads/<%= user.userImg %>"
+            />
+            <% } %>
+          </a>
 
           <div
             class="modal fade"
