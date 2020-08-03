@@ -80,6 +80,15 @@ Post.findSinglePost = (id) => {
         },
       ])
       .toArray();
+
+    // clean up author
+    posts = posts.map((post) => {
+      post.author = {
+        username: post.author.username,
+      };
+      return post;
+    });
+
     if (posts.length) {
       console.log(posts[0]);
       resolve(posts[0]);
