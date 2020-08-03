@@ -11,7 +11,7 @@ exports.create = (req, res) => {
   post
     .create()
     .then(() => {
-      res.send("Post created");
+      res.render("user-profile");
     })
     .catch((err) => {});
 };
